@@ -3,8 +3,9 @@
   margin: auto;
   letter-spacing: 5px;
   max-width: 100%;
-  font-weight: 900;
+  font-weight: 500;
   padding: 25px 0px;
-  font-size: 16px;
+  font-size: 13px;
   border-top: 1px solid #5ef768;
+  color: #5ef768;
 }
