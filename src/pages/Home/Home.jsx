@@ -8,6 +8,23 @@ const Home = () => {
   // const API_KEY = "CG-QeeD1TWLLqAx9vLmtexR9PUx"
   const {allCoin,currency} = useContext(CoinContext)
   const [displayCoin,setDisplayCoin] = useState([])
+  const [input,setInput] = useState('');
+
+  const inputHandler = (event)=>{
+    setInput(event.target.value);
+    if(event.target.value==""){
+      setDisplayCoin(allCoin)
+    }
+
+  }
+
+  const searchHandler = async(event)=>{
+    event.preventDefault();
+    const coins = await allCoin.filter((item)=>{
+     return item.name.toLowerCase().includes(input.toLowerCase())
+    })
+    setDisplayCoin(coins)
+  }
   
   useEffect(()=>{
     setDisplayCoin(allCoin);
@@ -20,8 +37,18 @@ const Home = () => {
         <TypingEffect text={"Latest Crypto Marketprice !"} speed={100} />
         </h1>
         <p>Welcome to the world's largest cryptocurrency marketplace <br /> Sign up to explor more about crypto.</p> 
-        <form >
-          <input type="text"placeholder='Search Crypto...'/>
+        <form onSubmit={searchHandler}>
+
+
+
+          <input list='coinlist' onChange={inputHandler} value={input} type="text"placeholder='Search Crypto...' required/>
+
+
+          <datalist id='coinlist'>
+            {allCoin.map((item,index)=>(<option key={index} value={item.name}/>))}
+          </datalist>
+
+
           <button type='Submit'>Search</button>
         </form>
       </div>
