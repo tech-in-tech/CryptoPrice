@@ -50,7 +50,7 @@
   border-radius: 20px;
   font-weight: 500;
   color: #393939;
-  background: white;                
+  background: rgb(255, 255, 255);                
   border: none;
   cursor: pointer;
   margin: 0px 3px;
@@ -80,5 +80,13 @@
   }
   .navbar button img{
     width: 12px;
+  }
+}
+@media(max-width: 361px){
+  .navbar button{
+    padding: 10px 12px;
+    width: 80px;
+    font-size: 10px;
+    margin: 0 0;
   }
 }
